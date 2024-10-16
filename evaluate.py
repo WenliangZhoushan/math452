@@ -1,10 +1,8 @@
 import matplotlib.pyplot as plt
 from sklearn.metrics import confusion_matrix, classification_report
 import seaborn as sns
-import numpy as np
 import torch
-from data_preprocessing import load_data
-from models import LogisticRegressionModel
+
 
 def plot_confusion_matrix(y_true, y_pred, model_name):
     cm = confusion_matrix(y_true, y_pred)
@@ -13,7 +11,8 @@ def plot_confusion_matrix(y_true, y_pred, model_name):
     plt.title(f'{model_name} Confusion Matrix')
     plt.xlabel('Predicted Label')
     plt.ylabel('True Label')
-    plt.show()
+    plt.savefig(f'{model_name}_confusion_matrix.png')
+    plt.close()
 
 def generate_classification_report_func(y_true, y_pred, model_name):
     report = classification_report(y_true, y_pred)
