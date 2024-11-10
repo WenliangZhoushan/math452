@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from data_preprocessing import load_data, get_numpy_data
-from models import LogisticRegressionModel
+from models import LogisticRegression
 from hyperparameter_tuning import tune_knn, tune_svm
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -11,7 +11,7 @@ from evaluate import evaluate_models
 
 
 def train_logistic_regression(device, train_loader, test_loader):
-    model = LogisticRegressionModel(28*28, 10).to(device)
+    model = LogisticRegression(28*28, 10).to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.01)
     
